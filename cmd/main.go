@@ -2,14 +2,14 @@ package main
 
 import (
 	"github.com/gofiber/fiber/v3"
+	"github.com/pfirulo2022/api-trivia/database"
 )
 
 func main() {
+	database.ConnectDb()
 	app := fiber.New()
 
-	app.Get("/", func(c fiber.Ctx) error {
-		return c.SendString("Hola Bruno y Franco👋!")
-	})
+	setupRoutes(app)
 
 	app.Listen(":3000")
 }
